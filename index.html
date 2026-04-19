@@ -14,7 +14,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* 🔥 changed from height to min-height */
     text-align: center;
 }
 
@@ -31,6 +31,7 @@ body {
     max-width: 600px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     animation: fadeIn 1.5s ease;
+    overflow: hidden;
 }
 
 @keyframes fadeIn {
@@ -48,9 +49,10 @@ p {
     margin: 15px 0;
 }
 
-/* ✨ UPDATED BUTTON */
+/* ✨ REAL SLIDE BUTTON */
 button {
     margin: 10px;
+    margin-top: 10px;
     padding: 12px 20px;
     border: none;
     border-radius: 12px;
@@ -58,7 +60,7 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.6s ease;
+    transition: margin-top 0.6s ease;
 }
 
 button:hover {
@@ -108,7 +110,6 @@ button:hover {
         You are special because you are YOU.
     </p>
 
-    <!-- ✅ UPDATED BUTTON -->
     <button onclick="next(event)">Click here…</button>
 
     <div id="part2" class="hidden">
@@ -163,11 +164,11 @@ function next(event) {
 
     if(step === 1) {
         document.getElementById("part2").style.display = "block";
-        btn.style.transform = "translateY(40px)";
+        btn.style.marginTop = "140px"; /* real slide */
     }
     if(step === 2) {
         document.getElementById("part3").style.display = "block";
-        btn.style.transform = "translateY(80px)";
+        btn.style.marginTop = "300px"; /* further slide */
     }
 }
 
