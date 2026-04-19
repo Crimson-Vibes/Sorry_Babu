@@ -14,7 +14,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* 🔥 changed from height to min-height */
+    height: 100vh;
     text-align: center;
 }
 
@@ -31,7 +31,6 @@ body {
     max-width: 600px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     animation: fadeIn 1.5s ease;
-    overflow: hidden;
 }
 
 @keyframes fadeIn {
@@ -49,10 +48,8 @@ p {
     margin: 15px 0;
 }
 
-/* ✨ REAL SLIDE BUTTON */
 button {
     margin: 10px;
-    margin-top: 10px;
     padding: 12px 20px;
     border: none;
     border-radius: 12px;
@@ -60,7 +57,7 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: margin-top 0.6s ease;
+    transition: 0.3s;
 }
 
 button:hover {
@@ -78,7 +75,6 @@ button:hover {
     position: fixed;
     color: #ff4d6d;
     animation: float 5s linear infinite;
-    pointer-events: none;
 }
 
 @keyframes float {
@@ -110,7 +106,7 @@ button:hover {
         You are special because you are YOU.
     </p>
 
-    <button onclick="next(event)">Click here…</button>
+    <button onclick="next()">Click here…</button>
 
     <div id="part2" class="hidden">
         <p>
@@ -149,7 +145,7 @@ button:hover {
         <h3>Will you forgive me? ❤️</h3>
 
         <button onclick="forgive()">Yes ❤️</button>
-        <button onclick="nope(event)">No 😒</button>
+        <button onclick="nope()">No 😒</button>
 
         <div id="response" class="hidden"></div>
     </div>
@@ -158,17 +154,13 @@ button:hover {
 <script>
 let step = 0;
 
-function next(event) {
+function next() {
     step++;
-    let btn = event.target;
-
     if(step === 1) {
         document.getElementById("part2").style.display = "block";
-        btn.style.marginTop = "140px"; /* real slide */
     }
     if(step === 2) {
         document.getElementById("part3").style.display = "block";
-        btn.style.marginTop = "300px"; /* further slide */
     }
 }
 
@@ -178,11 +170,11 @@ function forgive() {
     res.innerHTML = "Thank you babu ❤️ I promise I’ll prove it with my actions.";
 }
 
-function nope(event) {
+function nope() {
     let btn = event.target;
     btn.style.position = "absolute";
-    btn.style.left = Math.random() * 70 + "%";
-    btn.style.top = Math.random() * 70 + "%";
+    btn.style.left = Math.random() * 80 + "%";
+    btn.style.top = Math.random() * 80 + "%";
 }
 
 // floating hearts
@@ -202,3 +194,6 @@ setInterval(() => {
 
 </body>
 </html>
+
+
+give me full edited code
