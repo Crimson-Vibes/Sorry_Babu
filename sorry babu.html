@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I’m Sorry ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 600px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+    color: #ff4d6d;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+button {
+    margin: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #ff4d6d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e63950;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 1s ease;
+}
+
+.heart {
+    position: fixed;
+    color: #ff4d6d;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>I’m Sorry Babu ❤️</h1>
+
+    <p>
+        Babu… I know I messed up. Not just by getting insecure,
+        but by how I reacted and spoke to you.
+    </p>
+
+    <p>
+        You were just being yourself, enjoying with your friends,
+        and instead of trusting you, I questioned you.
+        That wasn’t fair, darling.
+    </p>
+
+    <p>
+        And what I said about my past… comparing you…
+        I regret that deeply.
+        You are special because you are YOU.
+    </p>
+
+    <button onclick="next()">Click here…</button>
+
+    <div id="part2" class="hidden">
+        <p>
+            The way you tease me, the way you flirt with me…
+            I didn’t realize it before, but I’m actually falling for you.
+        </p>
+
+        <p>
+            You’re changing me, darling…
+            I was someone with a lot of ego,
+            someone who never said sorry easily…
+        </p>
+
+        <p>
+            But today, I am here,
+            because losing you hurts more than my ego ever mattered.
+        </p>
+    </div>
+
+    <div id="part3" class="hidden">
+        <p>
+            I understand now — love isn’t control.
+            It’s trust, space, and respect.
+        </p>
+
+        <p>
+            I don’t want to cage you, babu.
+            I want to be someone who supports you and trusts you.
+        </p>
+
+        <p>
+            I’m not asking you to forget everything instantly…
+            just one chance to prove myself.
+        </p>
+
+        <h3>Will you forgive me? ❤️</h3>
+
+        <button onclick="forgive()">Yes ❤️</button>
+        <button onclick="nope()">No 😒</button>
+
+        <div id="response" class="hidden"></div>
+    </div>
+</div>
+
+<script>
+let step = 0;
+
+function next() {
+    step++;
+    if(step === 1) {
+        document.getElementById("part2").style.display = "block";
+    }
+    if(step === 2) {
+        document.getElementById("part3").style.display = "block";
+    }
+}
+
+function forgive() {
+    let res = document.getElementById("response");
+    res.style.display = "block";
+    res.innerHTML = "Thank you babu ❤️ I promise I’ll prove it with my actions.";
+}
+
+function nope() {
+    let btn = event.target;
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * 80 + "%";
+    btn.style.top = Math.random() * 80 + "%";
+}
+
+// floating hearts
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}, 500);
+</script>
+
+</body>
+</html>
