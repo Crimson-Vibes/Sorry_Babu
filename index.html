@@ -48,6 +48,7 @@ p {
     margin: 15px 0;
 }
 
+/* ✨ UPDATED BUTTON */
 button {
     margin: 10px;
     padding: 12px 20px;
@@ -57,7 +58,7 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.6s ease;
 }
 
 button:hover {
@@ -75,6 +76,7 @@ button:hover {
     position: fixed;
     color: #ff4d6d;
     animation: float 5s linear infinite;
+    pointer-events: none;
 }
 
 @keyframes float {
@@ -106,7 +108,8 @@ button:hover {
         You are special because you are YOU.
     </p>
 
-    <button onclick="next()">Click here…</button>
+    <!-- ✅ UPDATED BUTTON -->
+    <button onclick="next(event)">Click here…</button>
 
     <div id="part2" class="hidden">
         <p>
@@ -145,7 +148,7 @@ button:hover {
         <h3>Will you forgive me? ❤️</h3>
 
         <button onclick="forgive()">Yes ❤️</button>
-        <button onclick="nope()">No 😒</button>
+        <button onclick="nope(event)">No 😒</button>
 
         <div id="response" class="hidden"></div>
     </div>
@@ -154,13 +157,17 @@ button:hover {
 <script>
 let step = 0;
 
-function next() {
+function next(event) {
     step++;
+    let btn = event.target;
+
     if(step === 1) {
         document.getElementById("part2").style.display = "block";
+        btn.style.transform = "translateY(40px)";
     }
     if(step === 2) {
         document.getElementById("part3").style.display = "block";
+        btn.style.transform = "translateY(80px)";
     }
 }
 
@@ -170,11 +177,11 @@ function forgive() {
     res.innerHTML = "Thank you babu ❤️ I promise I’ll prove it with my actions.";
 }
 
-function nope() {
+function nope(event) {
     let btn = event.target;
     btn.style.position = "absolute";
-    btn.style.left = Math.random() * 80 + "%";
-    btn.style.top = Math.random() * 80 + "%";
+    btn.style.left = Math.random() * 70 + "%";
+    btn.style.top = Math.random() * 70 + "%";
 }
 
 // floating hearts
