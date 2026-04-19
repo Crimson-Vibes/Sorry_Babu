@@ -31,7 +31,6 @@ body {
     max-width: 600px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     animation: fadeIn 1.5s ease;
-    position: relative;
 }
 
 @keyframes fadeIn {
@@ -50,7 +49,7 @@ p {
 }
 
 button {
-    margin-top: 20px;
+    margin: 10px;
     padding: 12px 20px;
     border: none;
     border-radius: 12px;
@@ -58,24 +57,12 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.4s;
-    position: relative;
-}
-
-/* ✨ Button slide animation */
-.move-down {
-    animation: slideDown 0.6s ease forwards;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(0); }
-    to { transform: translateY(30px); }
+    transition: 0.3s;
 }
 
 button:hover {
     background: #e63950;
     transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(255,77,109,0.6);
 }
 
 .hidden {
@@ -119,7 +106,7 @@ button:hover {
         You are special because you are YOU.
     </p>
 
-    <button id="nextBtn" onclick="next()">Click here…</button>
+    <button onclick="next()">Click here…</button>
 
     <div id="part2" class="hidden">
         <p>
@@ -158,7 +145,7 @@ button:hover {
         <h3>Will you forgive me? ❤️</h3>
 
         <button onclick="forgive()">Yes ❤️</button>
-        <button onclick="nope(event)">No 😒</button>
+        <button onclick="nope()">No 😒</button>
 
         <div id="response" class="hidden"></div>
     </div>
@@ -166,25 +153,15 @@ button:hover {
 
 <script>
 let step = 0;
-const btn = document.getElementById("nextBtn");
 
 function next() {
     step++;
-
     if(step === 1) {
         document.getElementById("part2").style.display = "block";
-        animateButton();
     }
     if(step === 2) {
         document.getElementById("part3").style.display = "block";
-        btn.style.display = "none"; // hide after final step
     }
-}
-
-function animateButton() {
-    btn.classList.remove("move-down"); 
-    void btn.offsetWidth; // restart animation
-    btn.classList.add("move-down");
 }
 
 function forgive() {
@@ -193,8 +170,8 @@ function forgive() {
     res.innerHTML = "Thank you babu ❤️ I promise I’ll prove it with my actions.";
 }
 
-function nope(e) {
-    let btn = e.target;
+function nope() {
+    let btn = event.target;
     btn.style.position = "absolute";
     btn.style.left = Math.random() * 80 + "%";
     btn.style.top = Math.random() * 80 + "%";
@@ -217,3 +194,8 @@ setInterval(() => {
 
 </body>
 </html>
+
+
+
+
+can u make the click button come down as the text appears
